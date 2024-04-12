@@ -1,0 +1,106 @@
+body{
+    background-color: #D5DEEF;
+}
+
+
+
+/* Login_Page */
+#login_body{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    text-align: center;
+}
+#login_Section{
+    background-color: white;
+    width: 24rem;
+    height: 27rem;
+    border-radius: 10%;
+    font-family: "Roboto",sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.login_input{
+    width: 70%;
+    height: 7%;
+    margin-top: 40px;
+    border-color: #BDBDBD;
+    border-width: thin;
+}
+input::placeholder{
+    text-align: center;
+}
+#login_button{
+    background-color: #8AAEE0;
+    border: none;
+    width: 60%;
+    height: 8%;
+    margin-top: 50px;
+}
+#sign_up_button{
+    background-color: #8AAEE0;
+    border: none;
+    width: 60%;
+    height: 8%;
+    margin-top: 10px;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+#intro{
+    font-size: 20px;
+    font-weight: 900;
+    margin-top: 10%;
+}
+
+/* 회원가입 페이지 */
+#sign_body{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+#sign_up_section{
+    background-color: white;
+    width: 24rem;
+    height: 32rem;
+    padding-left: 20px;
+    
+}
+#sign_title{
+    font-family: "Roboto",sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+#sign_form{
+    font-family: "Roboto",sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    margin-top: 30px;
+}
+#sign_input{
+    width: 90%;
+    height: 7%;
+    border-color: #BDBDBD;
+    border-width: thin;
+    border-radius: 5px;}
+
+#sign_button{
+    background-color: #8AAEE0;
+    font-size: 600;
+    font-family: "Roboto",sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    border: none;
+    margin-top: 60px;
+    margin-left: px;
+    margin-left: 30px;
+    width: 75%;
+    height: 8%;
+    border-radius: 5px;
+}
