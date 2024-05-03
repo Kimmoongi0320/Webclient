@@ -104,3 +104,47 @@ header{
     height: 8%;
     border-radius: 5px;
 }
+
+/* 추천 페이지 */
+#recommand_header {  
+    height: 50px;
+    padding: 1rem;
+    color: white;
+    background: #395886;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    right: 0px;
+}
+#recommand_title{
+    margin-right: 50px;
+    color: black;
+
+}
+#menu{
+    color: #BDBDBD;
+    margin-left: 15px;
+    margin-right: 20px;
+    text-decoration-line: none;
+    font-size: 20px;
+}
+#recommand_body{
+    text-align: center;
+}
+#recommand_div{
+    margin-top: 200px;
+}
+#recommand_form{
+    margin-top: 50px;
+}
+.form-option:hover {
+    background-color:#8AAEE0;
+    color: #D9D9D9;
+  }
+
+/* 음식 추천 페이지 */
+#food_menu{
+    margin-top: 200px;
+}
