@@ -148,3 +148,73 @@ header{
 #food_menu{
     margin-top: 200px;
 }
+#food_button{
+    background-color: #8AAEE0;
+    width: 350px;
+    height: 60px;
+    border: none;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 80px;
+}
+#go_home{
+    background-color: #8AAEE0;
+    margin-top: 30px;
+    height: 60px;
+    border: none;
+    font-size: 30px;
+    font-weight: 400;
+    width: 300px;
+}
+
+/* 음식점 페이지 */
+#store_body{
+    margin-top: 100px;
+    padding-left: 90px;
+}
+#stores{
+    margin-top: 50px;
+}
+
+/* 정보 수정페이지 */
+#info_name{
+    font-weight: 500;
+    margin-top: 70px;
+    margin-left: 50px;
+}
+#info_img{
+    width: 100px;
+}
+#info_input{
+    border: none ;
+    width: 500px;
+    border-radius: 5px;
+    height: 30px;
+    margin-left: 50px;
+}
+#info_input2{
+    border: none ;
+    width: 500px;
+    border-radius: 5px;
+    height: 30px;
+    margin-left: 50px;
+    background-color: #cccccc
+    ;
+}
+#info_button{
+    width: 250px;
+    border: none;
+    margin-left: 50px;
+    margin-top:30px ;
+    height: 30px;
+    border-radius: 5px
+}
+#info_button2{
+    width: 250px;
+    border: solid;
+    border-color: #333333;
+    margin-left: 10px;
+    margin-top:30px ;
+    height: 30px;
+    border-radius: 5px
+}

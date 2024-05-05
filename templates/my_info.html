@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오늘의 메뉴</title>
+
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
+  <body style="padding-left: 90px">
+    <header id="recommand_header">
+      <h1 id="recommand_title">오늘의 메뉴!</h1>
+
+      <nav>
+        <a href="#" id="menu">Home</a>
+        <a href="#" id="menu">Logout</a>
+        <a href="#" id="menu">내 정보 수정</a>
+        <a href="#" id="menu">메뉴 추가</a>
+      </nav>
+    </header>
+    <h1 style="margin-top: 140px; font-weight: 500">내 정보 수정</h1>
+    <h1>김문기님</h1>
+    <div style="display: flex; align-items: center">
+      <img
+        src="../static/img/pngegg.png"
+        id="info_img"
+        alt=""
+        style="margin-right: 20px; margin-bottom: 200px"
+      />
+      <form>
+        <h2 style="margin-bottom: 5px" id="info_name">이름</h2>
+        <input
+          type="text"
+          id="info_input2"
+          value="??"
+          style="margin-bottom: 10px"
+          disabled
+        /><br />
+        <h2 style="margin-bottom: 5px" id="info_name">아이디</h2>
+        <input
+          type="text"
+          id="info_input"
+          value=""
+          style="margin-bottom: 10px"
+        /><br />
+        <h2 style="margin-bottom: 5px" id="info_name">비밀번호</h2>
+        <input
+          type="text"
+          id="info_input"
+          value=""
+          style="margin-bottom: 10px"
+        /><br />
+        <button
+          id="info_button"
+          style="background-color: #333333; color: white"
+        >
+          확인
+        </button>
+        <button id="info_button2">취소</button>
+      </form>
+    </div>
+  </body>
+</html>

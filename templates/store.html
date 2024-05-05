@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오늘의 메뉴</title>
+    <link rel="stylesheet" href="../static/style.css" />
+    <style>
+      /* 추가한 CSS */
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+      #recommand_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+      }
+      #store_body {
+        display: flex;
+        flex-wrap: wrap;
+        height: calc(100% - 50px); /* 헤더 높이를 제외한 나머지 공간 차지 */
+      }
+      #store_left,
+      #store_right {
+        width: 50%;
+        overflow-y: auto; /* 스크롤 추가 */
+      }
+      #store_left ul,
+      #store_right ul {
+        padding: 0;
+      }
+      #stores {
+        list-style: none;
+        padding: 10px;
+        border-bottom: 1px solid #ddd; /* 구분선 추가 */
+      }
+    </style>
+  </head>
+  <body>
+    <header id="recommand_header">
+      <h1 id="recommand_title">오늘의 메뉴!</h1>
+
+      <nav>
+        <a href="#" id="menu">Home</a>
+        <a href="#" id="menu">Logout</a>
+        <a href="#" id="menu">내 정보 수정</a>
+        <a href="#" id="menu">메뉴 추가</a>
+      </nav>
+    </header>
+    <div id="store_body">
+      <div id="store_left">
+        <h1>주변 맛집 정보 top 5</h1>
+        <ul>
+          <li id="stores">1.~~</li>
+          <li id="stores">2.~~</li>
+          <li id="stores">3.~~</li>
+          <li id="stores">4.~~</li>
+          <li id="stores">5.~~</li>
+        </ul>
+      </div>
+      <div id="store_right">
+        <h1></h1>
+        <ul style="margin-top: 110px">
+          <li id="stores">6.~~</li>
+          <li id="stores">7.~~</li>
+          <li id="stores">8.~~</li>
+          <li id="stores">9.~~</li>
+          <li id="stores">10.~~</li>
+        </ul>
+      </div>
+      <button id="go_home" style="margin-left: 700px">
+        다시 메뉴 추천 받기!
+      </button>
+    </div>
+  </body>
+</html>
