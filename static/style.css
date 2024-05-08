@@ -224,7 +224,7 @@ header{
     padding: 1rem;
     overflow-y: auto;
     direction: ltr;
-    scrollbar-color: #395886 #e4e4e4;
+    scrollbar-color: #8AAEE0 #e4e4e4;
     scrollbar-width: thin;
     width: 50%;
     padding-top: 100px;
@@ -246,7 +246,10 @@ header{
   .section::-webkit-scrollbar {
     width: 20px;
   }
-  
+  .section{
+    padding-right: 0px;
+    width: 650px;
+  }
   .section::-webkit-scrollbar-track {
     background-color: #e4e4e4;
     border-radius: 100px;
@@ -278,3 +281,26 @@ header{
         font-size: large;
         font-weight: 600;
     }
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 500px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+    .styled-table thead tr {
+        background-color: #8AAEE0;
+        color: #ffffff;
+        text-align: left;
+    }
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+    }
+#delete_button{
+    border: none;
+    background-color:#D5DEEF ;
+    width: 40px;
+    height: 40px;
+}

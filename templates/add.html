@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>오늘의 메뉴</title>
-
+    <script
+      src="https://kit.fontawesome.com/880f85c8e8.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="../static/style.css" />
   </head>
   <body>
@@ -20,14 +23,35 @@
     </header>
     <div class="section">
       <h2>현재 메뉴 리스트</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis
-        non, inventore incidunt repudiandae id vel nisi officiis provident iste
-        necessitatibus. Ex recusandae eveniet tempora.
-      </p>
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Points</th>
+            <th>action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>
+              <button id="delete_button">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div
-      style="float: right; width: 50%; margin-top: 100px; text-align: center"
+      style="
+        float: right;
+        width: 50%;
+        margin-top: 100px;
+        text-align: center;
+        padding-right: 300px;
+      "
     >
       <h1 style="margin-top: 80px; font-weight: 600">메뉴 추가하기</h1>
       <form action="" id="recommand_form">
