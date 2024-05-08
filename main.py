@@ -11,5 +11,11 @@ def home():
     return render_template("login_page.html")
 
 
+@app.route()
+def sign_up():
+    pass
+
+
 if __name__ == "__main__":
+
     app.run(debug=True)
