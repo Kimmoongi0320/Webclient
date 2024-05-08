@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body id="login_body">
-    <header>
-        <h1 id="intro">오늘의 메뉴</h1>
+    <header style="display: flex; height: 60px;">
+        <img src="../static/img/food.png" style="width: 40px; display: inline-block;" alt="">
+        <h1 id="intro" style="display: inline-block; margin-left: 10px;">오늘의 메뉴</h1>
     </header>
     <br>
     <div id="login_Section">
@@ -23,7 +24,7 @@
             <button id="login_button" type="submit">로그인</button>
         </form>
         <br>
-        <button id="sign_up_button">회원가입</button>
+        <a href="{{url_for('sign_up')}}"><button id="sign_up_button" type="button">회원가입</button></a>
         <script>
             let but = document.querySelector("#sign_up_button");
             but.addEventListener('click',function(){

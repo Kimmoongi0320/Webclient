@@ -65,9 +65,10 @@ header{
 }
 #sign_up_section{
     background-color: white;
-    width: 24rem;
+    width: 26rem;
     height: 32rem;
     padding-left: 20px;
+    border-radius: 10px;
     
 }
 #sign_title{
