@@ -3,26 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>오늘의 메뉴</title>
+    <title>{{name}}</title>
 
     <link rel="stylesheet" href="../static/style.css" />
   </head>
   <body id="recommand_body">
     <header id="recommand_header">
-      <div style="display: flex; align-items: center;">
-      <img src="../static/img/food.png" style="height: 50px;" alt="">
-      <h1 id="recommand_title">오늘의 메뉴!</h1>
+      <div style="display: flex; align-items: center">
+        <img src="../static/img/food.png" style="height: 50px" alt="" />
+        <h1 id="recommand_title">오늘의 메뉴!</h1>
       </div>
       <nav>
-        <a href="#" id="menu">Home</a>
-        <a href="#" id="menu">Logout</a>
-        <a href="#" id="menu">내 정보 수정</a>
+        <a href="{{url_for('menu',username = name)}}" id="menu">Home</a>
+        <a href="{{url_for('home')}}" id="menu">Logout</a>
+        <a href="{{url_for('my_info',username=name)}}" id="menu"
+          >내 정보 수정</a
+        >
         <a href="#" id="menu">메뉴 추가</a>
       </nav>
     </header>
     <div id="recommand_div">
       <h1>오늘의 메뉴 추천받기!</h1>
-      <img src="" alt="이미지 삽입" />
+      <img id="food_fic" src="../static/img/cute_food.jpg" alt="이미지 삽입" />
       <form action="" id="recommand_form">
         <div class="mb-3">
           <select

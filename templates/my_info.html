@@ -9,19 +9,21 @@
   </head>
   <body style="padding-left: 90px">
     <header id="recommand_header">
-      <div style="display: flex; align-items: center;">
-      <img src="../static/img/food.png" style="height: 50px;" alt="">
-      <h1 id="recommand_title">오늘의 메뉴!</h1>
+      <div style="display: flex; align-items: center">
+        <img src="../static/img/food.png" style="height: 50px" alt="" />
+        <h1 id="recommand_title">오늘의 메뉴!</h1>
       </div>
       <nav>
-        <a href="#" id="menu">Home</a>
-        <a href="#" id="menu">Logout</a>
-        <a href="#" id="menu">내 정보 수정</a>
+        <a href="{{url_for('menu',username = name)}}" id="menu">Home</a>
+        <a href="{{url_for('home')}}" id="menu">Logout</a>
+        <a href="{{url_for('my_info',username=name)}}" id="menu"
+          >내 정보 수정</a
+        >
         <a href="#" id="menu">메뉴 추가</a>
       </nav>
     </header>
     <h1 style="margin-top: 140px; font-weight: 500">내 정보 수정</h1>
-    <h1>김문기님</h1>
+    <h1>{{name}}님</h1>
     <div style="display: flex; align-items: center">
       <img
         src="../static/img/pngegg.png"
@@ -34,7 +36,7 @@
         <input
           type="text"
           id="info_input2"
-          value="??"
+          value="{{name}}"
           style="margin-bottom: 10px"
           disabled
         /><br />
@@ -48,7 +50,7 @@
         <h2 style="margin-bottom: 5px" id="info_name">비밀번호</h2>
         <input
           type="text"
-          id="info_input"
+          id="info_input3"
           value=""
           style="margin-bottom: 10px"
         /><br />
@@ -58,8 +60,17 @@
         >
           저장
         </button>
-        <button id="info_button2">취소</button>
+        <button type="button" id="info_button2">취소</button>
       </form>
+      <script>
+        document
+          .getElementById("info_button2")
+          .addEventListener("click", function (event) {
+            document.getElementById("info_input").value = "";
+            document.getElementById("info_input3").value = "";
+            event.preventDefault();
+          });
+      </script>
     </div>
   </body>
 </html>

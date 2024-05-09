@@ -23,7 +23,7 @@ body{
 }
 .login_input{
     width: 70%;
-    height: 7%;
+    height: 30px;
     margin-top: 40px;
     border-color: #BDBDBD;
     border-width: thin;
@@ -35,7 +35,7 @@ input::placeholder{
     background-color: #8AAEE0;
     border: none;
     width: 60%;
-    height: 8%;
+    height: 35px;
     margin-top: 50px;
 }
 #sign_up_button{
@@ -43,7 +43,7 @@ input::placeholder{
     border: none;
     width: 60%;
     height: 8%;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 header{
     position: fixed;
@@ -199,7 +199,14 @@ header{
     border-radius: 5px;
     height: 30px;
     margin-left: 50px;
-    background-color: #cccccc
+    ;
+}
+#info_input3{
+    border: none ;
+    width: 500px;
+    border-radius: 5px;
+    height: 30px;
+    margin-left: 50px;
     ;
 }
 #info_button{
@@ -304,4 +311,8 @@ header{
     background-color:#D5DEEF ;
     width: 40px;
     height: 40px;
+}
+
+#food_fic{
+    width: 200px;
 }
