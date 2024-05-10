@@ -1,6 +1,5 @@
 from flask import Flask, url_for, redirect, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
-
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///members.db"
 db = SQLAlchemy(app)
@@ -13,6 +12,8 @@ class User(db.Model):
     user_id = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
 
+with app.app_context():
+    db.create_all()
 
 @app.route("/")
 def home():
@@ -97,10 +98,22 @@ def menu(username):
     return render_template("recommand.html", name=username)
 
 
-# 개인정보 수정
+# 개인정보 수정 페이지 로드
 @app.route("/myinfo/<username>")
 def my_info(username):
     return render_template("my_info.html", name=username)
+
+#개인정보 수정 내용 반영
+@app.route('/change/<username>',methods=['POST'])
+def change(username):
+    newid = request.form.get('newid')
+    newpass = request.form.get('newpass')
+    with app.app_context():
+        db.session.query(User).filter_by(name =username).update({"user_id":newid,"password":newpass})
+        db.session.commit()
+    flash("개인정보가 변경되었습니다.") 
+    return redirect(url_for('my_info',username = username))
+
 
 
 if __name__ == "__main__":

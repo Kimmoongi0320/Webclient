@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="../static/style.css" />
   </head>
   <body style="padding-left: 90px">
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <script>
+      alert("{{messages[-1]}}");
+    </script>
+    {% endif %} {% endwith %}
     <header id="recommand_header">
       <div style="display: flex; align-items: center">
         <img src="../static/img/food.png" style="height: 50px" alt="" />
@@ -31,7 +36,7 @@
         alt=""
         style="margin-right: 20px; margin-bottom: 200px"
       />
-      <form>
+      <form action="{{url_for('change',username=name)}}" method="post">
         <h2 style="margin-bottom: 5px" id="info_name">이름</h2>
         <input
           type="text"
@@ -43,6 +48,7 @@
         <h2 style="margin-bottom: 5px" id="info_name">아이디</h2>
         <input
           type="text"
+          name="newid"
           id="info_input"
           value=""
           style="margin-bottom: 10px"
@@ -50,6 +56,7 @@
         <h2 style="margin-bottom: 5px" id="info_name">비밀번호</h2>
         <input
           type="text"
+          name="newpass"
           id="info_input3"
           value=""
           style="margin-bottom: 10px"
@@ -57,6 +64,7 @@
         <button
           id="info_button"
           style="background-color: #333333; color: white"
+          type="submit"
         >
           저장
         </button>
