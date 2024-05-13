@@ -1,9 +1,13 @@
 from flask import Flask, url_for, redirect, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Table, Column, Integer, String, MetaData, select, delete, insert
+import random
+
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///members.db"
 db = SQLAlchemy(app)
 app.secret_key = "kmg010320"
+meta = MetaData()
 
 
 class User(db.Model):
@@ -12,8 +16,10 @@ class User(db.Model):
     user_id = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
 
+
 with app.app_context():
     db.create_all()
+
 
 @app.route("/")
 def home():
@@ -38,13 +44,14 @@ def add_user():
     else:
         with app.app_context():
 
-            class Food(db.Model):
-                __tablename__ = new_name
-                id = db.Column(db.Integer, primary_key=True)
-                type = db.Column(db.String, nullable=False)
-                food_name = db.Column(db.String, nullable=False)
-
-            db.create_all()
+            food_table = Table(
+                new_name,
+                meta,
+                Column("id", Integer, primary_key=True),
+                Column("type", String, nullable=False),
+                Column("food_name", String, nullable=False),
+            )
+            meta.create_all(bind=db.engine)
             # 기본 음식 데이터 계정 생성할떄 추가
             new_users_data = [
                 {"type": "중식", "food_name": "짜장면"},
@@ -63,9 +70,11 @@ def add_user():
                 {"type": "한식", "food_name": "김치찜"},
             ]
             for data in new_users_data:
-                new_user = Food(type=data["type"], food_name=data["food_name"])
-                db.session.add(new_user)
-            db.session.commit()
+                db.session.execute(
+                    food_table.insert().values(
+                        type=data["type"], food_name=data["food_name"]
+                    )
+                )
 
             user_to_add = User(name=new_name, user_id=new_id, password=new_password)
             db.session.add(user_to_add)
@@ -103,19 +112,91 @@ def menu(username):
 def my_info(username):
     return render_template("my_info.html", name=username)
 
-#개인정보 수정 내용 반영
-@app.route('/change/<username>',methods=['POST'])
-def change(username):
-    newid = request.form.get('newid')
-    newpass = request.form.get('newpass')
-    with app.app_context():
-        db.session.query(User).filter_by(name =username).update({"user_id":newid,"password":newpass})
-        db.session.commit()
-    flash("개인정보가 변경되었습니다.") 
-    return redirect(url_for('my_info',username = username))
 
+# 개인정보 수정 내용 반영
+@app.route("/change/<username>", methods=["POST"])
+def change(username):
+    newid = request.form.get("newid")
+    newpass = request.form.get("newpass")
+    with app.app_context():
+        db.session.query(User).filter_by(name=username).update(
+            {"user_id": newid, "password": newpass}
+        )
+        db.session.commit()
+    flash("개인정보가 변경되었습니다.")
+    return redirect(url_for("my_info", username=username))
+
+
+# 음식추가 페이지
+@app.route("/add/<username>")
+def add(username):
+    table_name = username
+    food_table = Table(table_name, meta, autoload_with=db.engine)
+    query = select(food_table)
+    result = db.session.execute(query)
+    result_list = [row for row in result]
+    # 음식 종류 별로 정렬 하기
+    sorted_result = sorted(result_list, key=lambda x: x[1])
+    return render_template("add.html", foods=sorted_result, name=username)
+
+
+# 음식 삭제
+@app.route("/delete/<username>/<id>")
+def delete_food(username, id):
+    with app.app_context():
+        table_name = username
+        food_table = Table(table_name, meta, autoload_with=db.engine)
+        condition = food_table.c.id == id
+        delete_query = delete(food_table).where(condition)
+        db.session.execute(delete_query)
+        db.session.commit()
+        return redirect(url_for("add", username=username))
+
+
+# 음식 추가
+@app.route("/add_food/<username>", methods=["POST"])
+def add_food(username):
+    new_food_type = request.form.get("foodType")
+    new_food_name = request.form.get("food_name")
+    with app.app_context():
+        table_name = username
+        food_table = Table(table_name, meta, autoload_with=db.engine)
+        new_food_data = {"type": new_food_type, "food_name": new_food_name}
+        insert_stmt = insert(food_table).values(new_food_data)
+
+        # 실행
+        db.session.execute(insert_stmt)
+        db.session.commit()
+
+        return redirect(url_for("add", username=username))
+
+
+@app.route("/store/<username>", methods=["POST"])
+def store(username):
+    foodtype = request.form.get("foodType")
+    if foodtype == "전체":
+        table_name = username
+        food_table = Table(table_name, meta, autoload_with=db.engine)
+        query = select(food_table.c.food_name)
+        result = db.session.execute(query)
+        food_names = [row[0] for row in result]
+        try:
+            random_food = random.choice(food_names)
+        except IndexError:
+            random_food = "데이터 없음"
+        return render_template("food.html", food=random_food, name=username)
+    else:
+        table_name = username
+        food_table = Table(table_name, meta, autoload_with=db.engine)
+        query = select(food_table.c.food_name).where(food_table.c.type == foodtype)
+        result = db.session.execute(query)
+        food_names = [row[0] for row in result]
+        try:
+            random_food = random.choice(food_names)
+        except IndexError:
+            random_food = "데이터 없음"
+        return render_template("food.html", food=random_food, name=username)
 
 
 if __name__ == "__main__":
-
     app.run(debug=True)

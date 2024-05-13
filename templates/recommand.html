@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{name}}</title>
+    <title>오늘의 메뉴</title>
 
     <link rel="stylesheet" href="../static/style.css" />
   </head>
@@ -19,13 +19,17 @@
         <a href="{{url_for('my_info',username=name)}}" id="menu"
           >내 정보 수정</a
         >
-        <a href="#" id="menu">메뉴 추가</a>
+        <a href="{{url_for('add',username=name)}}" id="menu">메뉴 추가</a>
       </nav>
     </header>
     <div id="recommand_div">
       <h1>오늘의 메뉴 추천받기!</h1>
       <img id="food_fic" src="../static/img/cute_food.jpg" alt="이미지 삽입" />
-      <form action="" id="recommand_form">
+      <form
+        action="{{url_for('store',username = name)}}"
+        method="post"
+        id="recommand_form"
+      >
         <div class="mb-3">
           <select
             class="form-select"
@@ -47,6 +51,7 @@
           </select>
         </div>
         <button
+          id="food_button"
           type="submit"
           class="btn btn-primary"
           style="
@@ -63,5 +68,15 @@
         </button>
       </form>
     </div>
+    <script>
+      let food_button = document.getElementById("food_button");
+      let food_select = document.getElementById("foodTypeSelect");
+      food_button.addEventListener("click", function (event) {
+        if (food_select.value == "wrong") {
+          alert("음식 종류를 선택하세요");
+          event.preventDefault();
+        }
+      });
+    </script>
   </body>
 </html>
