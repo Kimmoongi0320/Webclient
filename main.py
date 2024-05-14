@@ -40,7 +40,7 @@ def add_user():
     existing_user = User.query.filter_by(name=new_name).first()
     if existing_user:
         flash("회원 정보가 이미 있습니다")
-        return render_template("sign_up_page.html")
+        return render_template("login_page.html")
     else:
         with app.app_context():
 
@@ -174,28 +174,19 @@ def add_food(username):
 @app.route("/store/<username>", methods=["POST"])
 def store(username):
     foodtype = request.form.get("foodType")
+    table_name = username
+    food_table = Table(table_name, meta, autoload_with=db.engine)
     if foodtype == "전체":
-        table_name = username
-        food_table = Table(table_name, meta, autoload_with=db.engine)
         query = select(food_table.c.food_name)
-        result = db.session.execute(query)
-        food_names = [row[0] for row in result]
-        try:
-            random_food = random.choice(food_names)
-        except IndexError:
-            random_food = "데이터 없음"
-        return render_template("food.html", food=random_food, name=username)
     else:
-        table_name = username
-        food_table = Table(table_name, meta, autoload_with=db.engine)
         query = select(food_table.c.food_name).where(food_table.c.type == foodtype)
-        result = db.session.execute(query)
-        food_names = [row[0] for row in result]
-        try:
-            random_food = random.choice(food_names)
-        except IndexError:
-            random_food = "데이터 없음"
-        return render_template("food.html", food=random_food, name=username)
+    result = db.session.execute(query)
+    food_names = [row[0] for row in result]
+    try:
+        random_food = random.choice(food_names)
+    except IndexError:
+        random_food = "데이터 없음"
+    return render_template("food.html", food=random_food, name=username)
 
 
 if __name__ == "__main__":
