@@ -34,10 +34,11 @@
       >
         <h3 style="margin-top: 60px">{{food}}</h3></label
       ><br />
-      <button id="food_button" type="submit">가게 추천받기 =></button> <br />
-      <form action="{{url_for('menu',username = name)}}">
-        <button id="go_home">홈으로</button>
+      <form action="{{url_for('store_recommand',food=food,username=name)}}" method="post">
+        <input type="text" placeholder="지역을 입력하세요" id="place_input" name="place"><br>
+        <button id="food_button" type="submit">맛집 검색</button>
       </form>
+
     </div>
   </body>
 </html>

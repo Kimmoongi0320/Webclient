@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>오늘의 메뉴</title>
-    <link rel="stylesheet" href="../static/style.css" />
-    <style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />    <style>
       /* 추가한 CSS */
       body,
       html {
@@ -75,9 +74,6 @@
           <li id="stores">10.~~</li>
         </ul>
       </div>
-      <button id="go_home" style="margin-left: 700px">
-        다시 메뉴 추천 받기!
-      </button>
     </div>
   </body>
 </html>

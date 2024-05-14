@@ -156,7 +156,7 @@ header{
     border: none;
     font-size: 30px;
     font-weight: 600;
-    margin-top: 80px;
+    margin-top: 30px;
 }
 #go_home{
     background-color: #8AAEE0;
@@ -166,6 +166,17 @@ header{
     font-size: 30px;
     font-weight: 400;
     width: 300px;
+}
+#place_input{
+    margin-top: 40px;
+    margin-bottom: 0;
+    font-size: 20px;
+    width: 325px;
+    padding: 10px;
+    border:0;
+    outline: solid;
+    outline-color: #8AAEE0;
+
 }
 
 /* 음식점 페이지 */
