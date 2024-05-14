@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>오늘의 메뉴</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />    <style>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <style>
       /* 추가한 CSS */
       body,
       html {
@@ -41,7 +45,11 @@
   <body>
     <header id="recommand_header">
       <div style="display: flex; align-items: center">
-        <img src="../static/img/food.png" style="height: 50px" alt="" />
+        <img
+          src="{{ url_for('static', filename='img/food.png') }}"
+          style="height: 50px"
+          alt=""
+        />
         <h1 id="recommand_title">오늘의 메뉴!</h1>
       </div>
       <nav>
@@ -53,26 +61,27 @@
         <a href="{{url_for('add',username=name)}}" id="menu">메뉴 추가</a>
       </nav>
     </header>
-    <div id="store_body">
-      <div id="store_left">
-        <h1>주변 맛집 정보 top 5</h1>
-        <ul>
-          <li id="stores">1.~~</li>
-          <li id="stores">2.~~</li>
-          <li id="stores">3.~~</li>
-          <li id="stores">4.~~</li>
-          <li id="stores">5.~~</li>
-        </ul>
-      </div>
-      <div id="store_right">
-        <h1></h1>
-        <ul style="margin-top: 110px">
-          <li id="stores">6.~~</li>
-          <li id="stores">7.~~</li>
-          <li id="stores">8.~~</li>
-          <li id="stores">9.~~</li>
-          <li id="stores">10.~~</li>
-        </ul>
+    <div>
+      <div id="place_body">
+        <h1>주변 맛집 정보 top 10</h1>
+        <table class="place-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for data in data_list%}
+            <tr>
+              <td>{{data['title'].replace('<b>', '').replace('</b>', '')}}</td>
+              <td>
+                <a href="{{data['link']}}" target="_blank">{{data['link']}}</a>
+              </td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
       </div>
     </div>
   </body>

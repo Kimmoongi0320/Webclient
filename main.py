@@ -9,8 +9,8 @@ import urllib.request
 import json
 
 properties = configparser.ConfigParser()
-properties.read('static\config.ini')
-resource = properties['ETC']
+properties.read("Webclient\static\config.ini")
+resource = properties["ETC"]
 Naver_id = resource["Client_id"]
 Naver_password = resource["Client_password"]
 
@@ -199,25 +199,26 @@ def store(username):
         random_food = "데이터 없음"
     return render_template("food.html", food=random_food, name=username)
 
-@app.route('/store_recommand/<food>/<username>',methods=["POST"])
-def store_recommand(food,username):
-    #지역 이름
-    place = request.form.get('place')
-    #네이버 api 구현
-    encText = urllib.parse.quote(place+" "+food+" 맛집")
-    url = "https://openapi.naver.com/v1/search/blog?query=" + encText # JSON 결과
+
+@app.route("/store_recommand/<food>/<username>", methods=["POST"])
+def store_recommand(food, username):
+    # 지역 이름
+    place = request.form.get("place")
+    # 네이버 api 구현
+    encText = urllib.parse.quote(place + " " + food + " 맛집")
+    url = "https://openapi.naver.com/v1/search/blog?query=" + encText  # JSON 결과
     request_ = urllib.request.Request(url)
-    request_.add_header("X-Naver-Client-Id",Naver_id)
-    request_.add_header("X-Naver-Client-Secret",Naver_password)
+    request_.add_header("X-Naver-Client-Id", Naver_id)
+    request_.add_header("X-Naver-Client-Secret", Naver_password)
     response = urllib.request.urlopen(request_)
     rescode = response.getcode()
-    if(rescode==200):
-        response_body = response.read().decode('utf-8')
+    if rescode == 200:
+        response_body = response.read().decode("utf-8")
         data = json.loads(response_body)
-        return render_template('store.html',name=username)
+        return render_template("store.html", name=username, data_list=data["items"])
     else:
         print("Error Code:" + rescode)
-        return render_template('recommand.html')
+        return render_template("recommand.html")
 
 
 if __name__ == "__main__":
