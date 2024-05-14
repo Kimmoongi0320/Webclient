@@ -13,7 +13,6 @@
 pip install flask
 pip install flask_sqlalchemy
 pip install sqlalchemy
-pip install flask
 ```
 
 ### 네이버 api발급
@@ -35,3 +34,10 @@ Client_password = ************
 <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
 <img src="https://img.shields.io/badge/fontawesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white">
 </div>
+
+### flask와 flask_alchemy를 이용하여 효과적으로 유저 정보와 각 유저에 대한 음식 리스트 DB에 저장을 할 수 있습니다.
+
+# 주요 기능
+-랜덤 음식 목록에 자신이 원하는 음식들을 추가 가능
+-랜덤 추첨 범위 지정 가능( ex) 일식,중식,한식...)
+-추천 받은 음식을 기준으로 위치를 입력하면 위치를 중심으로 음식점 검색결과 확인 가능
