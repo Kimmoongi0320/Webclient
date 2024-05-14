@@ -1,3 +1,7 @@
+<h1>메뉴 추천 웹사이트</h1>
+### 국민대학교 20212967 소프트융합학과 김문기
+### 개발기간2024.04~2024.05
+
 <div align=center><h1>📚 STACKS</h1>
 <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white">
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
