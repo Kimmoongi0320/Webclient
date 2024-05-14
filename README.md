@@ -5,7 +5,8 @@
 <h1>프로젝트 소개</h1>
 다른 음식 어플 들과는 다르게 오늘 먹을 음식을 추천해 주고 현재 위치 입력을 통하여 주변 맛집을 소개 시켜주는 웹 서비스 입니다.
 
-#시작 가이드
+# 시작 가이드
+
 
 <div align=center><h1>📚 STACKS</h1>
 <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white">
