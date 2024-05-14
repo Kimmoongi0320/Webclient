@@ -7,6 +7,8 @@
 
 # 시작 가이드
 ### 요구사항
+
+### 필수 다운로드 사항
 ```python
 pip install flask
 pip install flask_sqlalchemy
@@ -14,6 +16,14 @@ pip install sqlalchemy
 pip install flask
 ```
 
+### 네이버 api발급
+네이버 api를 통한 검색 결과를 받기 위해 네이버 api 서비스에 가입
+config.ini 파일을 생성하고 아이디와 secretkey입력
+```
+[ETC]
+Client_id = **************
+Client_password = ************
+```
 
 <div align=center><h1>📚 STACKS</h1>
 <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white">
