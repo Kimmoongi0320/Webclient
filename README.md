@@ -6,6 +6,13 @@
 다른 음식 어플 들과는 다르게 오늘 먹을 음식을 추천해 주고 현재 위치 입력을 통하여 주변 맛집을 소개 시켜주는 웹 서비스 입니다.
 
 # 시작 가이드
+### 요구사항
+```python
+pip install flask
+pip install flask_sqlalchemy
+pip install sqlalchemy
+pip install flask
+```
 
 
 <div align=center><h1>📚 STACKS</h1>
