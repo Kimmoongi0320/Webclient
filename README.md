@@ -20,7 +20,7 @@ pip install sqlalchemy
 
 ### 네이버 api발급
 네이버 api를 통한 검색 결과를 받기 위해 네이버 api 서비스에 가입
-config.ini 파일을 생성하고 아이디와 secretkey입력
+static폴더 아래에 config.ini 파일을 생성하고 아이디와 secretkey입력
 ```
 [ETC]
 Client_id = **************
